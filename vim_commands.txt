@@ -108,6 +108,10 @@ q: - open terminal history
 CTRL+r + + (control r and then plus or asterisk): paste from external clipboard to terminal
 <C-o> - back to previous position
 . - repeats previous command(s) - not sure what determines a repeatable action
+Mf{char} - motion to char to the right, including char
+MF{char} - motion to char to the left, including char
+Mt{char} - motion 'til char to the right (does not include char)
+MT{char} - motion 'til char to the left
 
 :w filename - write file to new file named filename
 :r filename - read contents of a file and place them at the cursor
