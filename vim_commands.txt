@@ -1,0 +1,215 @@
+telescope commands
+<leader>sh - search help
+<leader>sk - search keymaps
+<leader>sf - find files in project (search files)
+<leader>ss - search telescope (shows telescope commands)
+<leader>sg - search in projects (search grep)
+<leader>sd - search diagnostics (shows error messages in the telesope popup window, for instance)
+<leader>sr - search resume (restores previous search window)
+<leader>s. - search old files (shows recent files)
+<leader><leader> - list buffers
+<leader>/ - fuzzy search current buffer in a smaller window
+<leader>s/ - search only open buffers
+<leader>sn - search neovim config
+<leader>st - search treesitter (seems to show all symbols in treesitter?)
+
+<leader>pg - grep across project (project grep) **** not currently implemented, because it seems redundant ***
+
+lsp commands
+gd - goto definition of the function under cursor
+gr - lists all references of function under cursor
+gI - goto implementation (not really a python thing?)
+<leader>D - jump to place where type of word under cursor is defined (if pressed on a string, will jump to string definition, for instance)
+<leader>ds - search document symbols
+<leader>ws - search workpsace symbols (uses lsp_dynamic_workspace_symbols) - note: this has the problem where it needs setup.py to figure out what a project is
+<leader>rn - rename word under cursor
+<leader>ca - code action (not sure when this is available in python)
+K - open information about word under cursor (hover menu)
+gD - goto declaration - not really a python thing
+
+-- harpoon is not currently implemented, and I'm not sure it needs to be with these new keymaps - we'll see
+<leader>a - add file to harpoon
+<leader>s - open harpoon menu
+<a-a> - navigate to harpoon 1
+<a-s> - navigate to harpoon 2
+<a-d> - navigate to harpoon 3
+<a-f> - navigate to harpoon 4
+<C-d> - previous harpoon file
+<C-f> - next harpoon file
+
+
+<leader>pv - neovim project view
+
+while using lsp and suggestion box is open:
+<C-e> - abort
+<C-y> - confirm
+<C-n> - next item
+<C-p> - previous item
+
+comments
+gcc - comment current line
+[number]gcc - comments that many lines down
+gc[number][motion] - comments that many lines in that direction in addition to single line
+ - e.g., 4kgc would comment the current line and four extra lines above the current line
+gco - add comment to line below, move to line, and enter insert mode
+gcO - same as above, but to line above
+gcA - put comment at end of line and enter insert mode
+gc [visual mode] - comment selected line(s)
+-- in general, comments follow vim standards for movement, although they may not be supported by the language
+
+netrw mode
+% - new file
+d - new directory
+mb - bookmark on current directory
+gb - go back to previous bookmark
+
+deletions (note these deletions are more like cuts):
+dw - delete to end of current word, including trailing space
+daw - deletes the whole word (note that dae does not work)
+de - delete to the end of the current word, excluding trailing space 
+d$ - delete to the end of the line
+d^ - delete to the beginning of the line
+dd - delete entire line
+d2w - delete from cursor to end of word and entire next word (number repeats the preceeding action)
+di' - delete from current ' to next, without deleting ' - works if you're before the scope, but not after
+da" - delete from current " to next, including the " (these work for parens, brackets, etc. as well)
+df) - delete from cursor to next ), including the ) - can add a number to go that many ) in
+dt) - delete from custor until next ), excluding the ) - can also add numbers
+
+ce - delete remainder of word and go into insert mode (cw seems to behave exactly the same)
+caw - delete entire word and go into insert mode (note that cae does not do anything)
+cc - delete line and go into insert mode
+c$ - delete to end of line and go into insert mode
+note: c commands also work with numbers for repeating actions
+note note: I used to not be sure why you'd use c instead of d - it puts you into insert mode, but I don't know whether there are other differences
+
+visual mode:
+v - enter visual mode, where you can select text
+V - enter visual mode and select entire row (useful for selecting multiple rows)
+: - after selecting text, enter command(?) mode, and then do something like w filename to write selected text to a file
+i" or i' - select to closing " or ', without including the " or '
+a" or a' - same as above, but include " or '
+
+misc:
+u - undo last command
+U - (caps U) undo all changes on a line (does not seem to work if changes were made on another line)
+CTRL+R - redo command
+p - put copied text here 
+	p puts it below the cursor
+	P puts it above the cursor
+"[letter]p - put from lettered register
+rx - replace character under cursor with x (or whatever character)
+R - enter insert mode and replace characters as you type
+o - insert a blank line below the current line and go into insert mode
+O - same as above, but go above current line
+CTRL+D - while in normal mode, if :letter has been typed, will show commands that start with that letter
+> or < - increase or decrease indent while in visual mode
+q: - open terminal history
+CTRL+r + + (control r and then plus or asterisk): paste from external clipboard to terminal
+<C-o> - back to previous position
+. - repeats previous command(s) - not sure what determines a repeatable action
+
+:w filename - write file to new file named filename
+:r filename - read contents of a file and place them at the cursor
+:r command - execute a terminal command and place them at the cursor
+
+y - yank mode (need to combine with other actions)
+yl - yank single letter
+y$ - copy from cursor to end of line
+y^ - copy from cursor to beginning of line
+ye - copy from cursor to end of word without trailing space
+yw - copy from cursor to end of word with trailing space
+yaw - copy whole word
+yy - copy whole line
+"[letter]y - yank line to lettered register (using capial letter appends text to end of register)
+yi' and yi" - same as delete, but yanks
+ya' and ya" - same as above, but include ' or "
+
+"*yy - yanks to external clipboard
+"*p - puts from external clipboard
+
+movement:
+w - forward one word, to beginning of each word
+e - forward one word, to end of each word
+b - backward one word
+$ - end of line
+^ - go to first non-space character in line
+0 - go to beginning of line
+% - go to matching (, {, or [
+CTRL+g - show current location 
+G - go to bottom of file
+gg - go to top
+a number + G - go to that line in the file
+a number + ENTER - go that many lines forward
+number + h, j, k, or l - move that lines or characters
++ - move down a line to first non-space character
+- - move up a line to first non-space character
+) - move forward one sentence
+( - move backward one sentence
+:ju - show jump list (for use with CTRL+O and CTRL+I and other things I don't understand yet)
+[m or ]m - go to previous/next start of method
+[M or ]M - to to previous/next end of method
+* - next instance of current word
+
+
+searching:
+/ - search for something
+n - find next instance after finding something
+N - find previous instance
+? - search backwards (n and N are reversed from above when using ?)
+CTRL+o - naviate to previous cursor positions (probably not solely after having searched)
+CTRL+i - navigate forward in cursor positions
+\c - at end of search, ignores case
+:noh - clear highlighting from last search
+
+:s - substitute first instance of a word with another - :s/whatever/hey would substitute 'hey' for 'whatever' (but only for the current line)
+  - appending /g to end makes the command global for that line
+:%s/old/new/g - change every occurence in the file
+:%s/old/new/gc - change every occurence with a prompt
+	prompts for above search:
+	y - yes for selected instance
+	n - no for selected instance
+	a - replace all remaining
+	q - quit replace prompting (replacements are kept)
+	l - perform current substitution and quit (last?)
+	CTRL+E - move down the page (works outside of search context)
+	CTRL+Y - move up the page (works outside of search)
+
+:'<,>s/\v%V - not sure what that first part does (happens automatically when in visual mode), but this searches just text selected via visual mode and treats all characters as special other than letters and whatnot (so no need to escape them)
+
+:set - set options, such as whether to ignore case when searching
+:set inv[option] - set the inverse of the option
+:set no[option] - turn option off
+
+window splitting:
+:edit filename - open file in a new buffer
+CTRL+ww - switch between windows
+:vsplit file - open file in a vertical split, file will be on the left
+:bnext - next buffer (has to be a better way to do this)
+CTRL+^ - switch to another buffer - buffer to switch to is indicated with a # when you use :buffers
+:bd - close the current buffer
+:b [TAB] - switch between buffers
+:buffers - list open buffers
+
+a line with whatever in it
+
+ok, that works
+why would I ever want to do that?
+blah
+another line with whatever in it
+this is a line for testing deleting multiple words using c
+this line has two repeating words at the end, and those words are whatever whatever and then there's more stuff
+
+
+testing some yanking/putting stuff
+
+This is a sentence. This is another sentence. This is the third sentence. I still don't type as quickly on this keyboard as I did on my normal keyboard back in the day. 
+
+this is another line
+
+this is a sentence that "has some text in quotes" in it
+this is a sentence (without capitalization or punctuation) that has some parentheses in it
+should I do something more complex, such as "a sentence 'with inner quotes' or whatever" to see how that works?
+
+blah
+

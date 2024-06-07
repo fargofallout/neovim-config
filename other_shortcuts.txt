@@ -1,0 +1,40 @@
+git init - create new git project in the current directory
+git add . - add all files in directory
+
+git commit - commit the files
+git push [url] - push git to repository
+
+git clone [url] - pull git project from url
+
+git pull [url] - pull changes from project (clone copies a repo that presumably doesn't exist on the machine, whereas pull grabs changes to a repo that is there)
+
+git status - lists the files that have changed
+git diff --cached - see non-merged changes? need to test
+
+git config --global user.name [name] - configure name
+git config --global user.email [email] - configigure email address
+
+
+curl -LO -https://github.com/neovim... - install neovim from github
+
+
+
+
+tmux
+ctrl b + % - split window vertically
+ctrl b + " - split window horizontally
+ctrl b + [direction] - switch to that window
+ctrl b + ? - show tmux commands
+ctrl b + x - close current pane
+ctrl b + : - enter command mode
+    kill-session - exit tmux
+    resize-pane - change size
+        -D, R, U, L - resizes current pane in that direction by one cell
+        -D 10 - resizes down 10 cells
+        example:
+            :resize-pane -L 15 - resizes current pane left by 15 cells
+    - page explaining resizing, as well as creating keymaps for resizing: https://www.fosslinux.com/80813/how-to-adjust-the-tmux-pane-size.htm
+ctrl b + [ - enter scroll(?) mode - lets you move up and down the terminal to see previous lines, can also use page up/down - press q to quit
+
+tmux ls - list active tmux sessions (at terminal, not while tmux is running)
+tmux attach-session -t # - attach to session number #
