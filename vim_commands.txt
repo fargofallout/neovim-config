@@ -46,6 +46,9 @@ while using lsp and suggestion box is open:
 <C-n> - next item
 <C-p> - previous item
 
+<leader>b - set command for running python file (or anything) and if it's already set, run it and output to split window
+<leader>nb - re-set command for running python file, but don't run it (maybe I should change that part?)
+
 comments
 gcc - comment current line
 [number]gcc - comments that many lines down

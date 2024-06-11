@@ -65,6 +65,10 @@ vim.keymap.set("n", "<leader>b", function ()
     })
 end, {})
 
+vim.keymap.set("n", "<leader>nb", function ()
+    vim.g.py_file_to_run = vim.split(vim.fn.input "Command to run(e.g., python main.py):", " ")
+end, {})
+
 vim.api.nvim_create_autocmd("TextYankPost", {
     desc = "Highlight when yanking text", 
     group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
