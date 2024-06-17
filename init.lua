@@ -310,11 +310,11 @@ require("lazy").setup {
                 },
                 completion = { completeopt = "menu,menuone,noinsert" },
                 mapping = cmp.mapping.preset.insert {
-                    ["<C-n>"] = cmp.mapping.select_next_item(),
-                    ["<C-p>"] = cmp.mapping.select_prev_item(),
-                    ["<C-y>"] = cmp.mapping.confirm { select = true },
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<C-Space>"] = cmp.mapping.complete {},
+                    ["<Right>"] = cmp.mapping.select_next_item(),
+                    ["<Left>"] = cmp.mapping.select_prev_item(),
+                    ["<Down>"] = cmp.mapping.confirm { select = true },
+                    ["<Up>"] = cmp.mapping.abort(),
+                    ["<C-a>"] = cmp.mapping.complete {}, -- [A] for action? I should get shortcut descriptions into the documentation
                 },
                 sources = {
                     { name = "nvim_lsp" },

@@ -41,10 +41,11 @@ gD - goto declaration - not really a python thing
 <leader>pv - neovim project view
 
 while using lsp and suggestion box is open:
-<C-e> - abort
-<C-y> - confirm
-<C-n> - next item
-<C-p> - previous item
+<Up> - abort
+<Down> - confirm
+<Right> - next item
+<Left> - previous item
+<C-a> - open completion window
 
 <leader>b - set command for running python file (or anything) and if it's already set, run it and output to split window
 <leader>nb - re-set command for running python file, but don't run it (maybe I should change that part?)
